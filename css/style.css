@@ -239,3 +239,75 @@ a { color: inherit; }
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
+
+/* ---------- hero award chip ---------- */
+.hero-award {
+  display: inline-flex; align-items: center; gap: 8px; margin: 0 0 18px; padding: 6px 16px;
+  border-radius: 999px; background: var(--navy); color: #fff; text-decoration: none;
+  font-family: var(--font-display); font-weight: 600; font-size: .9rem; line-height: 1.4;
+}
+.hero-award:hover { background: var(--navy-deep); }
+
+/* ---------- achievement ---------- */
+.award {
+  display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: start;
+  padding: 32px; margin-bottom: 28px;
+  background: color-mix(in srgb, #fff 7%, transparent);
+  border: 1px solid color-mix(in srgb, #fff 22%, transparent);
+  border-left: 8px solid var(--orange);
+  border-radius: 4px;
+}
+.award-medal {
+  display: grid; place-items: center; gap: 6px; width: 150px; aspect-ratio: 1; align-content: center;
+  background: var(--orange); color: var(--navy-deep); border-radius: 50%;
+  font-family: var(--font-display); font-weight: 800; text-align: center; line-height: 1.1;
+}
+.medal-icon { font-size: 3.6rem; line-height: 1; }
+.medal-text { font-size: .85rem; letter-spacing: .14em; }
+.award-body { min-width: 0; }
+.award-kicker { margin: 0; font-size: .85rem; letter-spacing: .08em; font-weight: 600; color: var(--orange-soft); }
+.award-body h3 {
+  margin: 6px 0 0; font-family: var(--font-display); font-weight: 800; color: #fff;
+  font-size: clamp(1.6rem, 4.5vw, 2.5rem); line-height: 1.2; text-wrap: balance;
+}
+.award-body h3 span { color: var(--orange-soft); }
+.award-title { margin: 6px 0 0; font-family: var(--font-display); font-weight: 500; font-size: clamp(1.1rem, 2.6vw, 1.4rem); }
+.chips { list-style: none; margin: 18px 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.chips li { padding: 4px 14px; border-radius: 999px; background: color-mix(in srgb, #fff 12%, transparent); font-size: .95rem; }
+.award-body > p:not([class]) { margin: 0; max-width: 42em; }
+.award blockquote { margin: 20px 0 0; padding: 4px 0 4px 18px; border-left: 4px solid var(--orange); max-width: 42em; font-size: 1rem; }
+.award cite { display: block; margin-top: 8px; font-style: normal; font-size: .88rem; color: var(--orange-soft); }
+
+.award-gallery { grid-template-columns: repeat(6, 1fr); }
+.award-gallery .card.third { grid-column: span 2; }
+.award-gallery .card.wide img { aspect-ratio: 16 / 9; object-position: 50% 35%; }
+.award-gallery .card.third img { aspect-ratio: 4 / 3; }
+
+/* ---------- skill groups ---------- */
+.skill-groups { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: start; }
+.skill-group { background: var(--card); border: 1px solid var(--line); border-top: 6px solid var(--navy); border-radius: 4px; padding: 22px 24px 12px; min-width: 0; }
+.skill-group.featured { grid-column: 1 / -1; border-top-color: var(--orange); }
+.skill-group.tall { grid-row: span 2; }
+.skill-group h3 { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; color: var(--head); letter-spacing: .03em; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.strong-badge { font-style: normal; padding: 1px 12px; border-radius: 999px; background: var(--orange); color: var(--navy-deep); font-size: .8rem; font-weight: 700; letter-spacing: 0; }
+.group-sub { margin: 0 0 8px; color: var(--muted); font-size: .95rem; }
+.skill-group .skills { max-width: none; }
+.skill-group .skills li:last-child { border-bottom: 0; }
+.skill-group .skill-name { font-size: 1rem; }
+.skill-group.featured .skills { grid-template-columns: repeat(2, 1fr); column-gap: 40px; }
+.skill-group.featured .skills li:nth-last-child(2) { border-bottom: 0; }
+
+@media (max-width: 860px) {
+  .award { grid-template-columns: 1fr; gap: 20px; padding: 24px 20px; }
+  .award-medal { width: 110px; }
+  .medal-icon { font-size: 2.6rem; }
+  .skill-groups { grid-template-columns: 1fr; }
+  .skill-group.tall { grid-row: auto; }
+  .skill-group.featured .skills { grid-template-columns: 1fr; }
+  .skill-group.featured .skills li:nth-last-child(2) { border-bottom: 1px solid color-mix(in srgb, var(--head) 18%, transparent); }
+}
+@media (max-width: 600px) {
+  .award-gallery .card.third { grid-column: span 6; }
+  .skill-group { padding: 18px 16px 8px; }
+  .skills li { flex-wrap: wrap; gap: 6px 16px; }
+}
