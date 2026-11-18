@@ -238,15 +238,43 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; }
+
 }
 
-/* ---------- hero award chip ---------- */
-.hero-award {
-  display: inline-flex; align-items: center; gap: 8px; margin: 0 0 18px; padding: 6px 16px;
-  border-radius: 999px; background: var(--navy); color: #fff; text-decoration: none;
-  font-family: var(--font-display); font-weight: 600; font-size: .9rem; line-height: 1.4;
+/* ---------- hero: code วิ่งอยู่ด้านหลังรูป ---------- */
+:root {
+  --c-js: #a16207; --c-py: #1d4ed8; --c-java: #c2410c; --c-c: #475569; --c-html: #dc2626;
+  --c-css: #7c3aed; --c-bash: #15803d; --c-git: #be123c; --c-net: #db2777;
 }
-.hero-award:hover { background: var(--navy-deep); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --c-js: #facc15; --c-py: #60a5fa; --c-java: #fb923c; --c-c: #cbd5e1; --c-html: #f87171;
+    --c-css: #a78bfa; --c-bash: #4ade80; --c-git: #fb7185; --c-net: #f472b6;
+  }
+}
+.code-bg {
+  position: absolute; inset: -28px -56px; z-index: 0; pointer-events: none; overflow: hidden;
+  display: grid; align-content: center; opacity: .6;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .72rem; line-height: 22px;
+  -webkit-mask-image: radial-gradient(ellipse farthest-corner, #000 45%, transparent 100%);
+  mask-image: radial-gradient(ellipse farthest-corner, #000 45%, transparent 100%);
+}
+.hex { position: relative; z-index: 1; }
+.tag { z-index: 2; }
+.code-row { height: 22px; overflow: hidden; white-space: nowrap; }
+.code-row:nth-child(3n) { opacity: .55; }
+.code-row:nth-child(4n+1) { opacity: .85; }
+.code-track { display: flex; gap: 40px; padding-right: 40px; width: max-content; }
+.code-track span { flex: none; }
+.js-ready .code-track { animation: code-run var(--t, 40s) linear var(--d, 0s) infinite; }
+.code-row.reverse .code-track { animation-direction: reverse; }
+@keyframes code-run { to { transform: translateX(-50%); } }
+.c-js { color: var(--c-js); } .c-py { color: var(--c-py); } .c-java { color: var(--c-java); }
+.c-c { color: var(--c-c); } .c-html { color: var(--c-html); } .c-css { color: var(--c-css); }
+.c-bash { color: var(--c-bash); } .c-git { color: var(--c-git); } .c-net { color: var(--c-net); }
+@media (max-width: 1100px) { .code-bg { inset: -28px -8px; } }
+@media (max-width: 860px) { .code-bg { inset: -20px -32px; } }
+@media (prefers-reduced-motion: reduce) { .code-track { animation: none !important; } }
 
 /* ---------- achievement ---------- */
 .award {
